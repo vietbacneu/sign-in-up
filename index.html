@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>From sign in/up</title>
+    <style>
+        #age {
+            margin-left: 38px;
+        }
+
+        #address {
+            margin-left: 12px;
+            margin-bottom: 10px;
+        }
+
+        .formBox2 {
+            margin: 10px 30px;
+        }
+
+        .formBox {
+            margin: 10px 30px;
+
+        }
+
+        form {
+            width: 300px;
+            border: 1px solid black;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div>Form đăng ký</div>
+    <form>
+        <div class="formBox">
+            <label for="username">username</label>
+            <input type="text" name="username" id="username" />
+        </div>
+        <div class="formBox">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password" />
+        </div>
+        <div class="formBox">
+            <label for="age">age</label>
+            <input type="number" name="age" id="age" min="1" />
+        </div>
+        <div class="formBox">
+            <label for="address">address</label>
+            <input type="text" name="address" id="address" />
+        </div>
+        <div class="formBox">
+            <button id="btn" onclick=" validateForm() ">Đăng ký</button>
+        </div>
+        <div id="msg">
+            <pre></pre>
+        </div>
+    </form>
+    <div style="margin-top:30px">Form đăng nhập</div>
+    <form>
+        <div class="formBox2">
+            <label for="tk">username</label>
+            <input type="text" name="tk" id="tk" />
+        </div>
+        <div class="formBox2">
+            <label for="mk">password</label>
+            <input type="password" name="mk" id="mk" />
+        </div>
+        <div class="formBox2" style="margin-top: 10px;">
+            <button onclick="check()"> <a href="" id="test" style="text-decoration:none; color: black;"> Đăng nhập
+                </a></button>
+        </div>
+        <div id="msg2">
+            <pre></pre>
+        </div>
+    </form>
+
+    <script>
+        let data = [];
+        const addData = (ev) => {
+            ev.preventDefault();
+            let temp = {
+                username: document.getElementById('username').value,
+                password: document.getElementById('password').value,
+                age: document.getElementById('age').value,
+                address: document.getElementById('address').value
+            }
+            if (document.getElementById('username').value != "" & document.getElementById('password').value != ""  & document.getElementById('age').value != ""  & document.getElementById('address').value != "") 
+            
+            
+            { data.push(temp); }
+            document.querySelector('form').reset();
+
+
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('btn').addEventListener('click', addData);
+        });
+
+        function validateForm() {
+            var u = document.getElementById("username").value;
+            var p = document.getElementById("password").value;
+            var y = document.getElementById("age").value;
+            var z = document.getElementById("address").value;
+
+
+            if (u == "") {
+                confirm("Nhập vào Tài khoản")
+                return false;
+            }
+            else if (p == "") {
+                confirm("Nhập vào Mật Khẩu")
+
+                return false;
+            }
+            else if (y == "") {
+                confirm("Nhập vào Tuổi")
+
+                return false;
+            }
+            else if (z == "") {
+                confirm("Nhập vào địa chỉ")
+
+                return false;
+            }
+
+            confirm("Đăng ký thành công")
+            return true
+        }
+
+        function check() {
+
+            var a = document.getElementById("tk").value;
+            var b = document.getElementById("mk").value;
+
+            if (b == "" & a == "") {
+                confirm("Nhập vào Tài khoản và Mật Khẩu")
+
+                return false;
+            }
+            else if (a == "") {
+                confirm("Nhập vào Tài khoản");
+                return false;
+            }
+            else if (b == "") {
+                confirm("Nhập vào Mật Khẩu");
+
+                return false;
+            }
+            for (var i = 0; i < data.length; i++) {
+                if (a == data[i]["username"] && b == data[i]["password"]) {
+                    document.getElementById("test").href = "about.html";
+                    confirm("Đăng nhập thành công");
+
+                    return true
+                }
+            }
+            confirm("Sai tên tài khoản hoặc mật khẩu")
+            return false
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>
