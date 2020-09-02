@@ -60,7 +60,7 @@
         </div>
     </form>
     <div style="margin-top:30px">Form đăng nhập</div>
-    <form>
+    <form class="form2">
         <div class="formBox2">
             <label for="tk">username</label>
             <input type="text" name="tk" id="tk" />
@@ -143,8 +143,9 @@
             }
             for (var i = 0; i < data.length; i++) {
                 if (a == data[i]["username"] && b == data[i]["password"]) {
-                    confirm("Đăng nhập thành công");
-                    document.querySelector('form').reset();
+
+                    confirm("Đăng nhập thành công")
+                          document.querySelector('.form2').reset();
                     return true
                 }
             }
